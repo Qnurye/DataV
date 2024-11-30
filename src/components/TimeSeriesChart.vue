@@ -22,20 +22,17 @@ const chartOption = ref({
   legend: {
     data: ['购买量', '访问量', '加购量'],
     textStyle: {
-      color: '#fff',
     },
   },
   xAxis: {
     type: 'category',
     data: props.data.map((item) => item.date),
     axisLabel: {
-      color: '#fff',
     },
   },
   yAxis: {
     type: 'value',
     axisLabel: {
-      color: '#fff',
     },
   },
   series: [

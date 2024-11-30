@@ -87,14 +87,12 @@ const barOption = {
   xAxis: {
     type: 'value',
     axisLabel: {
-      color: '#fff',
     },
   },
   yAxis: {
     type: 'category',
     axisLabel: {
       rotate: 30,
-      color: '#fff',
     },
     data: data.map(function (item) {
       return item.name

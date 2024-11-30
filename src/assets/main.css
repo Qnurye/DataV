@@ -4,9 +4,9 @@
 
 html,
 body {
-  @apply min-h-screen bg-gray-100 text-gray-900;
+  @apply min-h-screen bg-gray-200 text-gray-900;
 }
 
 #app {
-  @apply size-full flex flex-col gap-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white p-4 min-h-screen;
+  @apply size-full flex flex-col gap-4 bg-gradient-to-r from-blue-200 via-purple-200 to-cyan-200 text-gray-900 p-4 min-h-screen;
 }

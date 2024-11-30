@@ -24,13 +24,11 @@ const chartOption = ref({
     type: 'category',
     data: props.data.map((item) => item.name),
     axisLabel: {
-      color: '#fff',
     },
   },
   yAxis: {
     type: 'value',
     axisLabel: {
-      color: '#fff',
     },
   },
   series: [

@@ -24,6 +24,8 @@ const chartOption = ref({
         repulsion: 100,
       },
       roam: true,
+      edgeSymbol: ['circle', 'arrow'],
+      edgeSymbolSize: [4, 10],
       label: {
         show: true,
       },

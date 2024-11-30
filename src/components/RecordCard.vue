@@ -1,9 +1,7 @@
 <template>
-  <CardWrapper
-    class="size-full flex justify-between items-center p-4 rounded-lg shadow-md"
-  >
-    <span class="text-xl font-semibold text-yellow-300">{{ title }}</span>
-    <span class="font-mono text-3xl text-green-300">{{ value }}</span>
+  <CardWrapper class="size-full flex justify-between items-center p-4 rounded-lg shadow-md">
+    <span class="text-xl font-semibold text-yellow-900">{{ title }}</span>
+    <span class="font-mono text-3xl text-green-900">{{ value }}</span>
   </CardWrapper>
 </template>
 
@@ -22,7 +20,7 @@ export default {
     title: {
       type: String,
       default: 'Record',
-    }
+    },
   },
 }
 </script>
