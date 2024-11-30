@@ -18,7 +18,7 @@ export default {
     TopSalesChart,
     AssociationNetworkChart,
     TimeSeriesChart,
-    SankeyChart
+    SankeyChart,
   },
   setup() {
     const mapView = ref<'map' | 'bar'>('map')
@@ -32,36 +32,36 @@ export default {
         visit_count: Math.floor(Math.random() * 2000),
         purchase_count: Math.floor(Math.random() * 500),
         view_count: Math.floor(Math.random() * 3000),
-        add_to_cart_count: Math.floor(Math.random() * 600)
+        add_to_cart_count: Math.floor(Math.random() * 600),
       },
       {
         name: '商品B',
         visit_count: Math.floor(Math.random() * 2000),
         purchase_count: Math.floor(Math.random() * 500),
         view_count: Math.floor(Math.random() * 3000),
-        add_to_cart_count: Math.floor(Math.random() * 600)
+        add_to_cart_count: Math.floor(Math.random() * 600),
       },
       {
         name: '商品C',
         visit_count: Math.floor(Math.random() * 2000),
         purchase_count: Math.floor(Math.random() * 500),
         view_count: Math.floor(Math.random() * 3000),
-        add_to_cart_count: Math.floor(Math.random() * 600)
+        add_to_cart_count: Math.floor(Math.random() * 600),
       },
       {
         name: '商品D',
         visit_count: Math.floor(Math.random() * 2000),
         purchase_count: Math.floor(Math.random() * 500),
         view_count: Math.floor(Math.random() * 3000),
-        add_to_cart_count: Math.floor(Math.random() * 600)
+        add_to_cart_count: Math.floor(Math.random() * 600),
       },
       {
         name: '商品E',
         visit_count: Math.floor(Math.random() * 2000),
         purchase_count: Math.floor(Math.random() * 500),
         view_count: Math.floor(Math.random() * 3000),
-        add_to_cart_count: Math.floor(Math.random() * 600)
-      }
+        add_to_cart_count: Math.floor(Math.random() * 600),
+      },
     ])
 
     const topSalesData = ref([
@@ -84,7 +84,7 @@ export default {
       { name: '商品Q', sales: Math.floor(Math.random() * 2000) },
       { name: '商品R', sales: Math.floor(Math.random() * 2000) },
       { name: '商品S', sales: Math.floor(Math.random() * 2000) },
-      { name: '商品T', sales: Math.floor(Math.random() * 2000) }
+      { name: '商品T', sales: Math.floor(Math.random() * 2000) },
     ])
 
     const associationData = ref([
@@ -107,7 +107,7 @@ export default {
       { source: '商品I', target: '商品L', value: Math.floor(Math.random() * 100) },
       { source: '商品K', target: '商品N', value: Math.floor(Math.random() * 100) },
       { source: '商品M', target: '商品P', value: Math.floor(Math.random() * 100) },
-      { source: '商品O', target: '商品R', value: Math.floor(Math.random() * 100) }
+      { source: '商品O', target: '商品R', value: Math.floor(Math.random() * 100) },
     ])
 
     const generateRandomData = (days: number) => {
@@ -119,7 +119,7 @@ export default {
           date: date.toISOString().split('T')[0],
           purchase_count: Math.floor(Math.random() * 200),
           visit_count: Math.floor(Math.random() * 400),
-          add_to_cart_count: Math.floor(Math.random() * 100)
+          add_to_cart_count: Math.floor(Math.random() * 100),
         })
       }
       return data
@@ -136,7 +136,7 @@ export default {
       { source: '收藏', target: '购买', value: Math.floor(Math.random() * 100) },
       { source: '浏览', target: '分享', value: Math.floor(Math.random() * 150) },
       { source: '分享', target: '加购', value: Math.floor(Math.random() * 250) },
-      { source: '分享', target: '购买', value: Math.floor(Math.random() * 50) }
+      { source: '分享', target: '购买', value: Math.floor(Math.random() * 50) },
     ])
 
     return {
@@ -146,28 +146,29 @@ export default {
       topSalesData,
       associationData,
       timeSeriesData,
-      sankeyData
+      sankeyData,
     }
-  }
+  },
 }
 </script>
 
 <template>
   <header class="pb-4">
     <h1
-      class="text-4xl font-bold text-center bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-transparent bg-clip-text animate-pulse">
+      class="text-4xl font-bold text-center bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-transparent bg-clip-text"
+    >
       Tremendous Company Data Insight Platform
     </h1>
   </header>
 
-  <main class="grow grid grid-cols-11 gap-4">
-    <div class="col-span-3 flex flex-col gap-4" id="leftPanel">
+  <main class="grow grid grid-cols-1 md:grid-cols-11 gap-4">
+    <div class="col-span-1 md:col-span-3 flex flex-col gap-4" id="leftPanel">
       <CardWrapper class="size-full p-4 rounded-lg shadow-lg space-y-2">
-        <h2 class="text-xl font-semibold"> 最受欢迎的商品 </h2>
+        <h2 class="text-xl font-semibold">最受欢迎的商品</h2>
         <ItemAnalysisChart :data="mostPopItemsData" class="w-full h-64 md:h-80 lg:h-96" />
       </CardWrapper>
       <CardWrapper class="size-full p-4 rounded-lg shadow-lg space-y-2">
-        <h2 class="text-xl font-semibold"> 销量前 20 项商品 </h2>
+        <h2 class="text-xl font-semibold">销量前 20 项商品</h2>
         <TopSalesChart
           :data="topSalesData.sort((b, a) => a.sales - b.sales)"
           class="w-full h-64 md:h-80 lg:h-96"
@@ -175,8 +176,8 @@ export default {
       </CardWrapper>
     </div>
 
-    <div class="col-span-5 flex flex-col gap-4" id="midPanel">
-      <div class="flex flex-row gap-4">
+    <div class="col-span-1 md:col-span-5 flex flex-col gap-4" id="midPanel">
+      <div class="flex flex-col md:flex-row gap-4">
         <RecordCard :value="Math.floor(Math.random() * 20000)" :title="'购买记录'" class="flex-1" />
         <RecordCard :value="Math.floor(Math.random() * 20000)" :title="'总用户'" class="flex-1" />
         <RecordCard :value="Math.floor(Math.random() * 20000)" :title="'总商品'" class="flex-1" />
@@ -195,17 +196,17 @@ export default {
       </CardWrapper>
 
       <CardWrapper class="size-full p-4 rounded-lg shadow-lg space-y-2">
-        <h2 class="text-xl font-semibold"> 用户购买行为时间序列图 </h2>
+        <h2 class="text-xl font-semibold">用户购买行为时间序列图</h2>
         <TimeSeriesChart :data="timeSeriesData" class="w-full h-64 md:h-80 lg:h-96" />
       </CardWrapper>
     </div>
-    <div class="col-span-3 flex flex-col gap-4" id="rightPanel">
+    <div class="col-span-1 md:col-span-3 flex flex-col gap-4" id="rightPanel">
       <CardWrapper class="size-full p-4 rounded-lg shadow-lg space-y-2">
-        <h2 class="text-xl font-semibold"> 商品购买关联网络图 </h2>
+        <h2 class="text-xl font-semibold">商品购买关联网络图</h2>
         <AssociationNetworkChart :data="associationData" class="w-full h-64 md:h-80 lg:h-96" />
       </CardWrapper>
       <CardWrapper class="size-full p-4 rounded-lg shadow-lg space-y-2">
-        <h2 class="text-xl font-semibold"> 用户行为路径桑基图 </h2>
+        <h2 class="text-xl font-semibold">用户行为路径桑基图</h2>
         <SankeyChart :data="sankeyData" class="w-full h-64 md:h-80 lg:h-96" />
       </CardWrapper>
     </div>

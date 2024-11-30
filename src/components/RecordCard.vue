@@ -1,5 +1,5 @@
 <template>
-  <CardWrapper class="size-full flex justify-between items-center p-4 rounded-lg shadow-md">
+  <CardWrapper class="size-full flex justify-between items-center p-4 rounded-lg shadow-md min-h-fit">
     <span class="text-xl font-semibold text-yellow-900">{{ title }}</span>
     <span class="font-mono text-3xl text-green-900">{{ value }}</span>
   </CardWrapper>
