@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:2026',
+  baseURL: 'http://back.qnurye.online:2026',
   headers: {
     'Content-Type': 'application/json',
   },
