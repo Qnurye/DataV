@@ -3,15 +3,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import * as echarts from 'echarts'
+import { getTop20PopularItemsByBehavior, type PopularItem } from '@/api/popularTop20'
 
-const props = defineProps<{
-  data: Array<{
-    name: string
-    sales: number
-  }>
-}>()
+const data = ref<PopularItem[]>([])
+
+onMounted(async () => {
+  data.value = await getTop20PopularItemsByBehavior()
+})
 
 const chartOption = ref({
   tooltip: {
@@ -22,29 +22,27 @@ const chartOption = ref({
   },
   xAxis: {
     type: 'category',
-    data: props.data.map((item) => item.name),
-    axisLabel: {
-    },
+    data: data.value.map((item) => item.itemId.toString()),
+    axisLabel: {},
   },
   yAxis: {
     type: 'value',
-    axisLabel: {
-    },
+    axisLabel: {},
   },
   series: [
     {
-      name: '销量',
+      name: '流行度',
       type: 'bar',
-      data: props.data.map((item) => item.sales),
+      data: data.value.map((item) => item.popularity),
     },
   ],
 })
 
 watch(
-  () => props.data,
+  () => data.value,
   (newData) => {
-    chartOption.value.xAxis.data = newData.map((item) => item.name)
-    chartOption.value.series[0].data = newData.map((item) => item.sales)
+    chartOption.value.xAxis.data = newData.map((item) => item.itemId.toString())
+    chartOption.value.series[0].data = newData.map((item) => item.popularity)
   },
   { deep: true },
 )

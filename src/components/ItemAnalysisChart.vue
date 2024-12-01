@@ -1,20 +1,24 @@
 <template>
-  <v-chart :option="chartOption" class="w-full h-full"></v-chart>
+  <div class="w-full h-full relative">
+    <v-chart v-if="!loading" :option="chartOption" class="w-full h-full"></v-chart>
+    <div v-else class="absolute inset-0 flex items-center justify-center">
+      <loader-circle class="animate-spin text-blue-500" />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import * as echarts from 'echarts'
+import { ref, onMounted, watch } from 'vue'
+import { getTop5PopularItems, type PopularItem } from '@/api/popularTop5'
+import { LoaderCircle } from 'lucide-vue-next';
 
-const props = defineProps<{
-  data: Array<{
-    name: string
-    visit_count: number
-    purchase_count: number
-    view_count: number
-    add_to_cart_count: number
-  }>
-}>()
+const data = ref<PopularItem[]>([])
+const loading = ref(true)
+
+onMounted(async () => {
+  data.value = await getTop5PopularItems()
+  loading.value = false
+})
 
 const chartOption = ref({
   tooltip: {
@@ -24,53 +28,50 @@ const chartOption = ref({
     },
   },
   legend: {
-    data: ['访问量', '购买量', '浏览量', '加购量'],
-    textStyle: {
-    },
+    data: ['浏览量', '点赞量', '购买量', '流行度'],
+    textStyle: {},
   },
   xAxis: {
     type: 'category',
-    data: props.data.map((item) => item.name),
-    axisLabel: {
-    },
+    data: data.value.map((item) => item.id.toString()),
+    axisLabel: {},
   },
   yAxis: {
     type: 'value',
-    axisLabel: {
-    },
+    axisLabel: {},
   },
   series: [
     {
-      name: '访问量',
+      name: '浏览量',
       type: 'bar',
-      data: props.data.map((item) => item.visit_count),
+      data: data.value.map((item) => item.browseCount),
+    },
+    {
+      name: '点赞量',
+      type: 'bar',
+      data: data.value.map((item) => item.likeCount),
     },
     {
       name: '购买量',
       type: 'bar',
-      data: props.data.map((item) => item.purchase_count),
+      data: data.value.map((item) => item.purchaseCount),
     },
     {
-      name: '浏览量',
+      name: '流行度',
       type: 'bar',
-      data: props.data.map((item) => item.view_count),
-    },
-    {
-      name: '加购量',
-      type: 'bar',
-      data: props.data.map((item) => item.add_to_cart_count),
+      data: data.value.map((item) => item.popularityScore),
     },
   ],
 })
 
 watch(
-  () => props.data,
+  () => data.value,
   (newData) => {
-    chartOption.value.xAxis.data = newData.map((item) => item.name)
-    chartOption.value.series[0].data = newData.map((item) => item.visit_count)
-    chartOption.value.series[1].data = newData.map((item) => item.purchase_count)
-    chartOption.value.series[2].data = newData.map((item) => item.view_count)
-    chartOption.value.series[3].data = newData.map((item) => item.add_to_cart_count)
+    chartOption.value.xAxis.data = newData.map((item) => item.id.toString())
+    chartOption.value.series[0].data = newData.map((item) => item.browseCount)
+    chartOption.value.series[1].data = newData.map((item) => item.likeCount)
+    chartOption.value.series[2].data = newData.map((item) => item.purchaseCount)
+    chartOption.value.series[3].data = newData.map((item) => item.popularityScore)
   },
   { deep: true },
 )
