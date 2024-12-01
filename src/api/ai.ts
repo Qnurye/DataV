@@ -1,4 +1,4 @@
-import AiInstance from '@/axiosInstance'
+import { AiInstance } from '@/axiosInstance'
 
 export const askAiQuestion = async (message: string, conversation_id: string): Promise<string> => {
   try {
