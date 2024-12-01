@@ -8,6 +8,7 @@ import TopSalesChart from '@/components/TopSalesChart.vue'
 import TimeSeriesChart from '@/components/TimeSeriesChart.vue'
 import FunnelCompareChart from '@/components/FunnelCompareChart.vue' // Import the new component
 import FrequentItemListGraph from '@/components/FrequentItemListGraph.vue' // Import the new component
+import AiAsk from '@/components/AiAsk.vue' // Import the new component
 
 export default {
   components: {
@@ -18,7 +19,8 @@ export default {
     TopSalesChart,
     TimeSeriesChart,
     FunnelCompareChart, // Register the new component
-    FrequentItemListGraph // Register the new component
+    FrequentItemListGraph, // Register the new component
+    AiAsk // Register the new component
   },
   setup() {
     const mapView = ref<'map' | 'bar'>('map')
@@ -28,7 +30,7 @@ export default {
 
     return {
       mapView,
-      toggleMapView,
+      toggleMapView
     }
   }
 }
@@ -97,11 +99,8 @@ export default {
         <FunnelCompareChart class="w-full h-64 md:h-80 lg:h-96" />
       </CardWrapper>
     </div>
+    <AiAsk />
   </main>
-
-  <footer class="p-4 mt-4 bg-gray-800 rounded-lg">
-    <p class="text-center text-gray-400">Footer</p>
-  </footer>
 </template>
 
 <style scoped></style>

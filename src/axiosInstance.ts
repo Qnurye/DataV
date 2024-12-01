@@ -7,4 +7,11 @@ const axiosInstance = axios.create({
   },
 })
 
+const AiInstance = axios.create({
+  baseURL: 'http://10.12.112.166:9977/v1/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
 export default axiosInstance
