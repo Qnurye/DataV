@@ -59,9 +59,9 @@ export default {
 
     <div class="col-span-1 md:col-span-5 flex flex-col gap-4" id="midPanel">
       <div class="flex flex-col md:flex-row gap-4">
-        <RecordCard :value="Math.floor(Math.random() * 20000)" :title="'购买记录'" class="flex-1" />
-        <RecordCard :value="Math.floor(Math.random() * 20000)" :title="'总用户'" class="flex-1" />
-        <RecordCard :value="Math.floor(Math.random() * 20000)" :title="'总商品'" class="flex-1" />
+        <RecordCard :value="23291026" :title="'行为记录'" class="flex-1" />
+        <RecordCard :value="20000" :title="'总用户'" class="flex-1" />
+        <RecordCard :value="4758484" :title="'总商品'" class="flex-1" />
       </div>
 
       <CardWrapper class="size-full p-4 rounded-lg shadow-lg">
