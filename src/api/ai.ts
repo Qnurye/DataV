@@ -17,9 +17,10 @@ export const askAiQuestion = async (message: string, conversation_id: string): P
     })
 
     if (!response.ok) {
-      throw new Error(response)
+      throw new Error(response.toString())
     }
 
+    if (!response.body) return;
     const reader = response.body.getReader()
     let result = ''
     const decoder = new TextDecoder()

@@ -60,6 +60,10 @@ const askAi = async () => {
   }
 }
 
+const toggleVisibility = async () => {
+  visible.value = !visible.value
+}
+
 watch(answer, (newAnswer) => {
   displayedAnswer.value = ''
   let index = 0
