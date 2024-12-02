@@ -28,7 +28,7 @@
     </div>
     <div v-if="displayedAnswer" class="mt-4 p-4 border rounded bg-gray-100 shadow-inner">
       <message-square-quote class="text-blue-600 mb-2" />
-      <div v-html="renderMarkdown(displayedAnswer)" class="displayed-answer prose prose-sm"></div>
+      <div v-html="renderMarkdown(displayedAnswer)" class="displayed-answer prose prose-sm max-h-[400px] overflow-auto"></div>
     </div>
   </div>
   <button
