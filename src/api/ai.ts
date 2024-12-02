@@ -51,14 +51,21 @@ export const askAiQuestion = async (message: string, conversation_id: string): P
 export const createAiConversation = async (): Promise<string> => {
   try {
     const response = await AiInstance.post<{
-      data: {
-        conversation_id: string
-      }
+      'code': number,
+      'data': {
+        'conversation_id': number,
+        'lastChatTime': string,
+        'conversationName': string,
+        'num_conversation': number,
+        'knowledgeBaseId': string,
+        'userId': string
+      },
+      'message': string
     }>('/mark/chat/create-conversation', {
       user_id: 'mark',
       knowledge_base_id: 'kb5638f3942a054f'
     })
-    return response.data.conversation_id
+    return response.data.data.conversation_id.toString()
   } catch (error) {
     return ''
   }

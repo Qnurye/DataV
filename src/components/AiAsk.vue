@@ -51,20 +51,12 @@ const answer = ref('')
 const displayedAnswer = ref('')
 const visible = ref(false)
 const loading = ref(false)
-const conversationId = ref('')
 
 const askAi = async () => {
   if (question.value.trim()) {
     loading.value = true
-    answer.value = await askAiQuestion(question.value, conversationId.value)
+    answer.value = await askAiQuestion(question.value, (await createAiConversation()))
     loading.value = false
-  }
-}
-
-const toggleVisibility = async () => {
-  visible.value = !visible.value
-  if (visible.value && !conversationId.value) {
-    conversationId.value = await createAiConversation()
   }
 }
 
