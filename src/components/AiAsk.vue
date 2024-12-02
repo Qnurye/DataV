@@ -51,7 +51,7 @@ const answer = ref('')
 const displayedAnswer = ref('')
 const visible = ref(false)
 const loading = ref(false)
-const conversationId = ref('5')
+const conversationId = ref('')
 
 const askAi = async () => {
   if (question.value.trim()) {
